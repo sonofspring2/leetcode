@@ -8,7 +8,7 @@ public:
 	static int binarySearchRot(vector<int> &nums, int target){
 		int low = 0; 
 		int high = nums.size()-1;
-		while(low<=high){
+		while(low <= high){
 			int mid = ( low + high ) /2; 
 			cout << "high " << high << ";" << "low " << low << ";" << "mid " << mid << endl; 
 	
@@ -32,7 +32,9 @@ public:
 //			}
 			if( nums[mid] >=nums[low] ) {
 				if (target < nums[mid] ) {
-					target >=low ? high = mid -1: low = mid +1;
+					target >=nums[low] ? high = mid -1: low = mid +1;
+					cout <<" after update " << endl; 
+					cout << "high " << high << ";" << "low " << low << ";" << "mid " << mid << endl; 
 				}
 				else {
 					low = mid +1; 
@@ -43,7 +45,7 @@ public:
 					high = mid -1; 
 				}
 				else {
-					target >= low ? high = mid -1: low = mid +1; 
+					target >= nums[low] ? high = mid -1: low = mid +1; 
 				}
 			}
 			
@@ -60,7 +62,8 @@ int main(){
 	 // int array[] = {3,4 ,5 , 1 ,2};
 	// int array[] = {3,4 ,5 , 6 ,12};
 	 // int array[] = {5,1,3};
-	 int array[] = {1,3,5};
+	 // int array[] = {1,3,5};
+	  int array[] = {3,1};
 	int target = 1;  
 	vector<int> vect(array, array + sizeof(array)/sizeof(array[0]));
 	int result = Solution::binarySearchRot(vect, target); 
